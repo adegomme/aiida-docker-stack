@@ -1,4 +1,4 @@
-FROM aiidateam/aiida-docker-base:v1.0.0
+FROM degomme/aiida-docker-base:latest
 MAINTAINER AiiDA Team <developers@aiida.net>
 
 USER root
@@ -28,6 +28,10 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+
+#ignore dependencies to aiida-core from aiida-bigdft
+RUN pip install six voluptuous
+RUN pip install --no-deps  aiida-bigdft==0.1.0a0
 
 # Launch postgres server
 COPY opt/postgres.sh /opt/
