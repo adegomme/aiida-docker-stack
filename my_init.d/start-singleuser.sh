@@ -1,4 +1,4 @@
 #!/bin/bash
 set -em
 
-su -c /opt/start-singleuser-complete.sh aiida
+su -c ". /opt/conda/etc/profile.d/conda.sh; conda activate base; /opt/start-singleuser-complete.sh" aiida
